@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de pessoas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>NOME</th>
+                    <th>RG</th>
+                    <th>DATA DE ADMISSÃO</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for pessoa in pessoas%}
+                <tr>
+                    <td>{{pessoa[1].split()[0]}}</td>
+                    <td>{{pessoa[2]}}</td>
+                    <td>{{pessoa[3].strftime("%d/%m/%Y")}}</td>
+                    <td><a href="/deletar/{{pessoa[0]}}" class="btn-excluir"><i class="fas fa-trash"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Adicionar nova pessoa</h2>
+        <form action="/" method="POST">
+            <label for="nome">Nome: </label>
+            <input type="text" id="nome" name="nome" placeholder="nome">
+            <label for="rg">RG: </label>
+            <input type="text" id="rg" name="rg" placeholder="RG">
+            <label for="cpf">CPF: </label>
+            <input type="text" id="cpf" name="cpf" placeholder="CPF">
+            <label for="nascimento">Data de Nascimento: </label>
+            <input type="date" id="nascimento" name="nascimento" placeholder="Data de Nascimento" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}">
+            <label for="admissao">Data de Admissão: </label>
+            <input type="date" id="admissao" name="admissao" placeholder="Data de admissão" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+            <label for="funcao">Função: </label>
+            <input type="text" id="funcao" name="funcao" placeholder="Função">
+            <div class="div-btn-salvar">
+                <button type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
