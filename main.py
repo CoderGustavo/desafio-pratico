@@ -2,10 +2,10 @@ from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
-app.config["MYSQL_HOST"] = "localhost"
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = ""
-app.config["MYSQL_DB"] = "banco_desafio"
+app.config["MYSQL_HOST"] = "jobs.visie.com.br"
+app.config["MYSQL_USER"] = "gustavoornaghi"
+app.config["MYSQL_PASSWORD"] = "Z3VzdGF2b29y"
+app.config["MYSQL_DB"] = "gustavoornaghi"
 
 mysql = MySQL(app)
 
